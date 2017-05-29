@@ -16,59 +16,44 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+function getDateDiff (dateTimeStamp) {
+  var minute = 1000 * 60;
+  var hour = minute * 60;
+  var day = hour * 24;
+  var halfamonth = day * 15;
+  var month = day * 30;
+  var year = day * 365;
+  var now = new Date().getTime();
+  var diffValue = now - dateTimeStamp;
+  if(diffValue < 0){
+    //非法操作
+    return '数据出错';
+  }
+  var yearC = diffValue / year;
+  var monthC = diffValue / month;
+  var weekC = diffValue / (7 * day);
+  var dayC = diffValue / day;
+  var hourC = diffValue / hour;
+  var minC = diffValue / minute;
+  if(yearC >= 1){
+    result = parseInt(yearC) + '年以前';
+  }else if(monthC >= 1){
+    result = parseInt(monthC) + '个月前';
+  }else if(weekC >= 1){
+    result = parseInt(weekC) + '星期前';
+  }else if(dayC >= 1){
+    result = parseInt(dayC) + '天前';
+  }else if(hourC >= 1){
+    result = parseInt(hourC) + '小时前';
+  }else if(minC >= 5){
+    result = parseInt(minC) + '分钟前';
+  }else{
+    result = '刚刚发表';
+  }
+  return result;
+}
+
 module.exports = {
-  formatTime: formatTime
-};
-
-var index = require('../data/data_index.js')
-var index_next = require('../data/data_index_next.js')
-var discovery = require('../data/data_discovery.js')
-var discovery_next = require('../data/data_discovery_next.js')
-
-function getData(url){
-  return new Promise(function(resolve, reject){
-    wx.request({
-      url: url,
-      data: {},
-      header: {
-        //'Content-Type': 'application/json'
-      },
-      success: function(res) {
-        console.log("success")
-        resolve(res)
-      },
-      fail: function (res) {
-        reject(res)
-        console.log("failed")
-      }
-    })
-  })
+  formatTime: formatTime,
+  getDateDiff: getDateDiff
 }
-
-function getData2(){
-  return index.index;
-}
-
-function getNext(){
-  return index_next.next;
-}
-
-function getDiscovery(){
-  return discovery.discovery;
-}
-
-function discoveryNext(){
-  return discovery_next.next;
-}
-
-
-
-module.exports.getData = getData;
-module.exports.getData2 = getData2;
-module.exports.getNext = getNext;
-module.exports.getDiscovery = getDiscovery;
-module.exports.discoveryNext = discoveryNext;
-
-
-
-

@@ -4,36 +4,32 @@
 }
 /*导航 nav*/
 .top-bar {
-  height: 72rpx;
-  background: #444;
-  width:100%;
-  position: fixed;
-  top:0;
-  z-index:1;
+    display: flex;
+    border-bottom: 1px solid #eee;
 }
 .top-bar-item {
-  display:inline-block;
-  width: 150rpx;
-  color: #80bd01;
-  text-align: center;
-  /* line-height: 72rpx; */
-  font-size: 28rpx;
+  display: block;
+    width: 30px;
+    padding: 10px;
+    margin: auto;
 }
 .top-bar-active{
-  color: #fff;
-  font-size: 32rpx;
+ border-bottom: 2px solid #80bd01;
+    color: #80bd01;
+    font-weight: bold;
 }
 
 /*列表 list*/
 .scroll-posts-list{
   overflow: hidden;
-  margin-top: 72rpx;
+  margin-top: 0rpx;
 }
 .posts-list{
   position: relative;
   overflow: hidden;
   padding: 0 30rpx;
   border-bottom: 1rpx solid #80bd01;
+  
 }
 .posts-list-info{
   overflow: hidden;
@@ -43,10 +39,13 @@
   border-bottom: 1rpx solid #eee;
 }
 .posts-list-info .userimg{
-  overflow: hidden;
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+  width: 45rpx;
+  height: 45rpx;
+  border-radius: 45rpx;
+  top: 0rpx;
+  vertical-align: middle;
 }
 .posts-list-info .item-box{
   flex: 1;
@@ -66,7 +65,8 @@
 .posts-list-info .item-box .posts-title{
   height: 80rpx;
   margin: 20rpx 0;
-  font-size: 30rpx;
+  font-size: 35rpx;
+  font-weight: bold;
   color: #35495e;
   display: -webkit-box;
   overflow: hidden;
@@ -89,6 +89,16 @@
   color: red;
   border: 1rpx solid red;
 }
+.posts-list-info image{
+  /*position: absolute;*/
+  display: inline-block;
+  width: 45rpx;
+  height: 45rpx;
+  border-radius: 45rpx;
+  top: 10rpx;
+  vertical-align: middle;
+}
+
 .posts-list .bar-info .bar-info-item{
   display: inline-block;
   margin-right: 50rpx;
@@ -118,3 +128,5 @@
 .loading-font{
   font-size: 30rpx;
 }
+
+

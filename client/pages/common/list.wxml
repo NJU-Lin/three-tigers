@@ -3,18 +3,19 @@
 <scroll-view class="scroll-posts-list"  scroll-y="true" style="height:100%"  bindscrolltolower="lower">
   <view class="postslist">
     <block wx:for="{{postsList}}"  wx:key="">
-      <view class="posts-list">
-        <navigator url="/pages/detail/detail?id={{item.id}}">
-          <view class="posts-list-info" index="{{index}}">
-              <!--<image class="userimg" src="{{item.author.avatar_url}}" />-->
+      <view class="posts-list" data-item="{{item}}" bindtap="listClick">
+        <!--<navigator url="/pages/detail/detail?href={{item.href}}" >-->
+          <view class="posts-list-info" index="{{index}}"  >
+               <image class="userimg" src="/images/userImage/icon1.jpeg" />
               <view class="item-box">
                 <view class="userinfo">
-                  <text class="username">{{item.author}}</text>
+                  <text class="username">作者：{{item.author}}</text>
                   <text class="time">{{item.id}}</text>
                 </view>
                 <view class="posts-title">
 
                   <text>{{item.title}}</text>
+                  <!--<image class="userimg"  mode="widthFix" src="http://bbs.nju.edu.cn/file/Pictures/20170529012247.jpg" />-->
                 </view>
               </view>
           </view>
@@ -45,7 +46,7 @@
               <view class="bar-info-item-number">招聘</view>
             </view>-->
           </view>
-      </navigator>
+      <!--</navigator>-->
       </view>
     </block>
   </view>

@@ -37,9 +37,15 @@ function fetchGet(url, callback) {
 function fetchPost(url, data, callback) {
   wx.request({
     method: 'POST',
+    header: { 'Content-Type': 'application/json' },
     url: url,
-    data: data,
+
+    data: {
+      url: data,
+      y: ''
+    },
     success (res) {
+      console.log(res);
       callback(null, res.data)
     },
     fail (e) {

@@ -55,3 +55,11 @@
   color: #80bd01;
   text-decoration: underline;
 }
+
+.bar-info-item-icon{
+  display: inline-block;
+  vertical-align: middle;
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}

@@ -2,9 +2,9 @@ var Api = require('../../utils/api.js');
 var util = require('../../utils/util.js');
 
 var navList = [
-  {id:"all", title: "全部"},
+  {id:"all", title: "十大"},
   {id:"good", title: "精华"},
-
+  {id:"more", title: "关注"},
 ];
 
 Page({
@@ -28,12 +28,32 @@ Page({
     console.log('下拉刷新', new Date());
   },
 
-  
+  listClick: function(e){
+wx.navigateTo({
+  url: '/pages/detail/detail',
+})
+    var appInstance = getApp();
+    appInstance.href = e.currentTarget.dataset.item.href;
+  },
   onReachBottom: function () {
     this.lower();
     console.log('上拉刷新', new Date());
   },
-
+  // listClick:function(e){
+  //   let str = JSON.stringify(e.currentTarget.dataset.item);
+  //   wx.navigateTo({
+  //     url: '../pages/detail/detail?jsonStr=' + str,
+  //     success: function (res) {
+  //       // success
+  //     },
+  //     fail: function () {
+  //       // fail
+  //     },
+  //     complete: function () {
+  //       // complete
+  //     }
+  //   })
+  // },
   // 点击获取对应分类的数据
   onTapTag: function(e) {
     var that = this;
@@ -58,7 +78,7 @@ Page({
     var page = that.data.page;
     var limit = that.data.limit;
   //  var ApiUrl = Api.topics +'?tab='+ tab +'&page='+ page +'&limit='+ limit;
-    var ApiUrl = 'http://192.168.10.41:8080/top10';
+    var ApiUrl = 'http://localhost:8080/top10';
     that.setData({ hidden: false });
 
     // if(page == 1) {
@@ -83,7 +103,7 @@ Page({
     }
 
     )
-    console.log(postsList);
+   // console.log(postsList);
   },
 
   // 滑动底部加载

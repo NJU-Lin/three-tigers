@@ -1,39 +1,50 @@
 // posts.js
 var Api = require('../../utils/api.js');
 var util = require('../../utils/util.js');
-
+var bbsurl = "http://bbs.nju.edu.cn/bbstcon?";
 Page({
   data: {
     title: '话题详情',
     collectText:"收藏",
-    detail: {},
-    hidden: false,
+    detail: [],
+    hidden: true,
     modalHidden: true
   },
 
-  onLoad: function (options) {
-    this.fetchData(options.id);
+  onLoad: function () {
+    var appInstance = getApp();
+     this.fetchData(appInstance.href);
+     console.log(detail)
   },
 
   // 获取数据
-  fetchData: function (id) {
+  fetchData: function (href) {
     var that = this;
-    var ApiUrl = Api.topic +'/'+ id +'?mdrender=false';
+    var ApiUrl = "http://localhost:8080/bbs/context";
+ //   var href = bbsurl + "board=" + options.board + "&amp=" + options.amp + "&file=" + options.file; 
+  //  var href = "http://bbs.nju.edu.cn/bbstcon?board=Pictures&amp&file=M.1495992445.A";
     that.setData({
       hidden: false
     });
-    Api.fetchGet(ApiUrl, (err, res) => {
-      res.data.create_at = util.getDateDiff(new Date(res.data.create_at));
-      res.data.replies = res.data.replies.map(function (item) {
-          item.create_at = util.getDateDiff(new Date(item.create_at));
-          item.zanNum = item.ups.length;
-          return item;
-      })
-      that.setData({ detail: res.data });
-      setTimeout(function () {
-        that.setData({ hidden: true });
-      }, 300);
+    Api.fetchPost(ApiUrl, href, (err, res) => {
+   //   if (res.success) {
+        // var detail = that.data.detail;
+        // var replies = detail.replies[index];
+
+        // if (res.action === "up") {
+        //   replies.zanNum = replies.zanNum + 1;
+        // } else {
+        //   replies.zanNum = replies.zanNum - 1;
+        // }
+
+        that.setData({ 
+          detail: res.data
+          })
+
+ //     }
+
     })
+
   },
 
   // 收藏文章

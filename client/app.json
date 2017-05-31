@@ -1,6 +1,6 @@
 {
   "pages":[
-    
+   
     "pages/topics/topics",
     "pages/detail/detail",
     "pages/login/login",
@@ -12,7 +12,7 @@
     "backgroundTextStyle":"light",
     "backgroundColor":"#fff",
     "navigationBarBackgroundColor": "#444",
-    "navigationBarTitleText": "CNODE 社区",
+    "navigationBarTitleText": "南大小百合",
     "navigationBarTextStyle":"white",
     "enablePullDownRefresh":"true"
   },
@@ -32,5 +32,6 @@
       "iconPath":"images/bar/ME.png",
       "selectedIconPath":"images/bar/MEHL.png"
     }]
-  }
+  },
+    "debug": true
 }
